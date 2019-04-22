@@ -110,14 +110,9 @@ void toggle_cursor_blinking(emacs_env *env, bool blinking) {
   env->funcall(env, Fblink_cursor_mode, 1, (emacs_value[]){Qblinking});
 }
 
-emacs_value get_hex_color_fg(emacs_env *env, emacs_value face) {
-  return env->funcall(env, Fvterm_face_color_hex, 2,
-                      (emacs_value[]){face, Qforeground});
-}
-
-emacs_value get_hex_color_bg(emacs_env *env, emacs_value face) {
-  return env->funcall(env, Fvterm_face_color_hex, 2,
-                      (emacs_value[]){face, Qbackground});
+emacs_value vterm_get_color(emacs_env *env, int index) {
+  emacs_value idx = env->make_integer(env, index);
+  return env->funcall(env, Fvterm_get_color, 1, (emacs_value[]){idx});
 }
 
 void set_title(emacs_env *env, emacs_value string) {

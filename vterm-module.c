@@ -495,9 +495,9 @@ static void term_process_key(Term *term, unsigned char *key, size_t len,
                              VTermModifier modifier) {
   if (is_key(key, len, "<return>")) {
     vterm_keyboard_key(term->vt, VTERM_KEY_ENTER, modifier);
-  }else if (is_key(key, len, "<start_paste>")) {
+  } else if (is_key(key, len, "<start_paste>")) {
     vterm_keyboard_start_paste(term->vt);
-  }else if (is_key(key, len, "<end_paste>")) {
+  } else if (is_key(key, len, "<end_paste>")) {
     vterm_keyboard_end_paste(term->vt);
   } else if (is_key(key, len, "<tab>")) {
     vterm_keyboard_key(term->vt, VTERM_KEY_TAB, modifier);
@@ -713,8 +713,6 @@ int emacs_module_init(struct emacs_runtime *ert) {
   Fput_text_property =
       env->make_global_ref(env, env->intern(env, "put-text-property"));
   Fset = env->make_global_ref(env, env->intern(env, "set"));
-  Fvterm_face_color_hex =
-      env->make_global_ref(env, env->intern(env, "vterm--face-color-hex"));
   Fvterm_flush_output =
       env->make_global_ref(env, env->intern(env, "vterm--flush-output"));
   Fforward_line = env->make_global_ref(env, env->intern(env, "forward-line"));
